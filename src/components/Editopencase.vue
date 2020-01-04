@@ -15,8 +15,8 @@
         <v-text-field label="FID" v-model="fid"></v-text-field>
         <v-text-field label="Name" v-model="name" :rules="requiredRules" required></v-text-field>
         <v-text-field label="Vorname" v-model="surname" :rules="requiredRules" required></v-text-field>
-        <v-text-field label="Geburtsdatum" readonly prepend-icon="event"  v-model="birthdate" :rules="requiredRules" required></v-text-field>
-        <v-date-picker v-model="birthdate" :landscape="$vuetify.breakpoint.smAndUp"  :locale="'de'"></v-date-picker>
+        <v-text-field label="Geburtsdatum"  prepend-icon="event"  v-model="birthdate" :rules="requiredRules" required></v-text-field>
+        <!--<v-date-picker v-model="birthdate" :landscape="$vuetify.breakpoint.smAndUp"  :locale="'de'"></v-date-picker> -->
       </v-col>
       <v-col cols="12" sm="6" md="6">
         <h5 class="mt-5">Angaben zur Operation</h5>
@@ -26,7 +26,7 @@
         <v-select label="Operateur" v-model="surgeon" :items="surgeons" item-text="surgeon"></v-select>
         <v-select label="Assistent" v-model="assistant" :items="assistants" item-text="assistant"></v-select>
         <v-text-field label="OP-Datum" prepend-icon="event" v-model="opdate"></v-text-field>
-        <v-date-picker v-model="opdate" :landscape="$vuetify.breakpoint.smAndUp" :locale="'de'"></v-date-picker>
+       <!-- <v-date-picker v-model="opdate" :landscape="$vuetify.breakpoint.smAndUp" :locale="'de'"></v-date-picker> -->
         
       </v-col>
         </v-row>
@@ -112,11 +112,11 @@ export default {
             fid: this.fid,
             name: this.name,
             surname: this.surname,
-            birthdate: this.birthdate,
+            birthdate: moment(this.birthdate, 'DD-MM-YYYY').toDate(),
             diagnose: this.diagnose,
             operation: this.operation,
             isismodality: this.isismodality,
-            opdate: this.opdate,
+            opdate: moment(this.opdate, 'DD-MM-YYYY').toDate(),
             surgeon: this.surgeon,
             assistant: this.assistant,
           },

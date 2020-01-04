@@ -17,8 +17,8 @@
           <v-text-field label="FID" v-model="fid"></v-text-field>
           <v-text-field label="Name" v-model="name" :rules="requiredRules" required></v-text-field>
           <v-text-field label="Vorname" v-model="surname" :rules="requiredRules" required></v-text-field>
-         <v-text-field label="Geburtsdatum" readonly prepend-icon="event"  v-model="birthdate" :rules="requiredRules" required></v-text-field>
-          <v-date-picker class="mb-5" v-model="birthdate"  :landscape="$vuetify.breakpoint.smAndUp"  :locale="'de'"></v-date-picker>
+         <v-text-field label="Geburtsdatum"  prepend-icon="event"  v-model="birthdate" :rules="dateRules" required></v-text-field>
+        <!-- <v-date-picker class="mb-5" v-model="birthdate"  :landscape="$vuetify.breakpoint.smAndUp"  :locale="'de'"></v-date-picker>-->
         </v-col>
         <v-col cols="12" sm="6" md="6">
         <h5 class="mt-5">Angaben zur Operation</h5>
@@ -27,7 +27,7 @@
         <v-select label="ISIS-Gerät" v-model="isismodality" :items="isismodalities" item-text="device"></v-select>
         <v-select label="Operateur" v-model="surgeon" :items="surgeons" item-text="surgeon"></v-select>
         <v-select label="Assistent" v-model="assistant" :items="assistants" item-text="assistant"></v-select>
-        <v-text-field label="OP-Datum" prepend-icon="event" v-model="opdate" :rules="requiredRules" required>></v-text-field>
+        <v-text-field label="OP-Datum" prepend-icon="event" v-model="ODate" :rules="requiredRules" required>></v-text-field>
         <v-date-picker v-model="opdate" :landscape="$vuetify.breakpoint.smAndUp" :locale="'de'"></v-date-picker>
 
         </v-col>
@@ -53,7 +53,8 @@ export default {
     fid: '',
     name: '',
     surname: '',
-    birthdate: null,
+    birthdate: '',
+    datebirthdate: null,
     diagnose: '',
     operation: '',
     isismodality: '',
@@ -62,6 +63,10 @@ export default {
     assistant: '',
     requiredRules: [
       v => !!v || 'Bitte befüllen Sie alle Pflichtfelder',
+    ],
+      dateRules: [
+         v => !!v || 'Bitte befüllen Sie alle Pflichtfelder',
+      v => /^\s*(3[01]|[12][0-9]|0?[1-9])\.(1[012]|0?[1-9])\.((?:19|20)\d{2})\s*$/.test(v) || 'Nur Eingaben im Format dd.mm.yyyy sind zulässig',
     ],
     
     select: null,
@@ -85,6 +90,14 @@ export default {
         },
       ],
   }),
+
+  computed: {
+    // a computed getter
+    ODate: function () {
+      // `this` points to the vm instance
+      return moment(this.opdate).format("DD-MM-YYYY")
+    }
+  },
 
   
   // fetches all dropdown values form the database on pageload
@@ -129,6 +142,7 @@ for(var i = 0; i < this.compCases.length; i++) {
               'error',
             );
         }else{
+          this.datebirthdate = moment(this.birthdate, 'DD.MM.YYYY').toDate();
            const token = window.localStorage.getItem('auth');
         return axios({
           method: 'post',
@@ -138,7 +152,7 @@ for(var i = 0; i < this.compCases.length; i++) {
             fid: this.fid,
             name: this.name,
             surname: this.surname,
-            birthdate: this.birthdate,
+            birthdate:  this.datebirthdate,
             diagnose: this.diagnose,
             operation: this.operation,
             isismodality: this.isismodality,

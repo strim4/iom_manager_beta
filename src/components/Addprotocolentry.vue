@@ -61,7 +61,10 @@ export default {
     option:'',
     IomCategories:[],
     valid: true,
-    selectoptions: ['IOM', 'Anästhesie', 'OP-Verlauf', 'Weitere'],
+    selectoptions: ['IOM AEP','IOM Allgemein/Weitere', 'IOM D-Welle', 'IOM MEP/Grid', 'IOM EEG', 'IOM Mapping',
+     'IOM Reflexe', 'IOM SSEP', 'IOM MEP', 'IOM VEP',  'Anästhesie','Anästhesie Medikamente', 'OP-Verlauf Allgemein', 
+     'OP-Verlauf Blutdruck/Herzfrequenz', 'OP-Verlauf Dura', 'OP-Verlauf Gefässe', 'OP-Verlauf Komplikationen', 'OP-Verlauf Liquor',
+      'OP-Verlauf Medikamente o.a. Zugaben', 'OP-Verlauf Rücken', 'OP-Verlauf Tumor/Zyste', 'OP-Verlauf Vorbereitung', 'Weitere'],
     selected: [],
     categories: [],
     rules: [
