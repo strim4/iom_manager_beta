@@ -4,7 +4,7 @@ const passport = require('passport');
 
 module.exports.controller = (app) => {
 //fetch all Analyses
-app.get('/analyses', passport.authenticate('jwt', { session: false }),(req, res) => {
+app.get('/analyses',passport.authenticate('jwt', { session: false }), (req, res) => {
     AnalyseSchema.find({}, 'name cases', (error,
     analyses) => {
     if (error) { console.log(error); }
@@ -14,18 +14,18 @@ app.get('/analyses', passport.authenticate('jwt', { session: false }),(req, res)
     });
     }); 
 
-/* fetch a single Analyse
-app.get('/cases/:id', passport.authenticate('jwt', { session: false }), (req, res) => {
-    CaseSchema.findOne({_id: req.params.id}, 'casenr pid fid name surname birthdate diagnose operation isismodality opdate surgeon assistant', (error,
-    cases) => {
-    if (error) { console.log(error); }
-    res.send({
-    cases,
-    });
-    });
-    });
 
-*/
+app.get('/analyses/:id', passport.authenticate('jwt', { session: false }), (req, res) => {
+    AnalyseSchema.findOne({_id: req.params.id}, 'name cases', (error,
+        analyses) => {
+        if (error) { console.log(error); }
+        res.send({
+            analyses,
+        });
+        });
+        }); 
+    
+
 
 
 

@@ -22,6 +22,7 @@ jwtOptions.secretOrKey = 'iomapplicationsecretkey';
 
 const R = require('r-script');
 const edfName = '';
+const csvName = '';
 
 
 
@@ -64,7 +65,7 @@ res.json({ message: 'API Initialized!'});
 });
 
 
-//R test function
+//Method to call EDF.R Script
 function executeExAsync(callback) {
 	const inSig = [
 	
@@ -74,7 +75,7 @@ function executeExAsync(callback) {
 
 // the path to R bin must be added to the systemenvironment variables
 // the directory r library mus be writeable 
-    R('EDF.R').data({ df: inSig,  name: this.edfName }).call(function(error, result) {
+    R('static/EDF.R').data({ df: inSig,  name: this.edfName }).call(function(error, result) {
 		if (error) {
 			//console.error('ex-async throws error', error);
 			return callback(error, null);
@@ -86,10 +87,45 @@ function executeExAsync(callback) {
 
 
 
-
+//call async EDF R function
 app.post('/ex-async', function(req, res) {
     this.edfName =req.body.name;
 	executeExAsync(function(error, result) {
+		if (error) {
+			return res.status(500).send(error);
+        }
+        
+        
+        console.log(edfName);
+		return res.status(200).send(result);
+	});
+});
+
+
+//Method to call CSV.R Script
+function executeExAsyncCsv(callback) {
+	const inSig = [
+	
+    ];
+
+    
+
+// the path to R bin must be added to the systemenvironment variables
+// the directory r library mus be writeable 
+    R('static/CSV.R').data({ df: inSig,  name: this.csvName }).call(function(error, result) {
+		if (error) {
+			//console.error('ex-async throws error', error);
+			return callback(error, null);
+		}
+		console.error('ex-async success result', result);
+		return callback(null, result);
+	});
+}; 
+
+//call async CSV R function
+app.post('/ex-asyncCsv', function(req, res) {
+    this.csvName =req.body.name;
+	executeExAsyncCsv(function(error, result) {
 		if (error) {
 			return res.status(500).send(error);
         }

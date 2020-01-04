@@ -26,16 +26,16 @@
        </v-card-text>
       
        <v-card-text class="text-center">
-       <v-btn  class="my-n3" width="180px"  color="primary"  @click="dialogEval = true" >Auswertung </br> Monitorist</v-btn>
+       <v-btn  class="my-n3" width="140px"  color="primary"  @click="dialogEval = true" >Auswertung </br> Monitorist</v-btn>
       </v-card-text>
      <v-card-text class="text-center">
-       <v-btn  class="my-n3" width="180px"  color="primary"  @click="dialogBaselines = true" >Baselines</v-btn>
+       <v-btn  class="my-n3" width="140px"  color="primary"  @click="dialogBaselines = true" >Baselines</v-btn>
       </v-card-text>
       <v-card-text class="text-center">
-       <v-btn   class="my-n3" width="180px" color="primary"  @click="dialogExtras = true" >Extras</v-btn>
+       <v-btn   class="my-n3" width="140px" color="primary"  @click="dialogExtras = true" >Extras</v-btn>
       </v-card-text>
       <v-card-text class="text-center">
-       <v-btn   class="my-n3" width="180px" color="primary"  @click="dialogClosing = true" >Closing</v-btn>
+       <v-btn   class="my-n3" width="140px" color="primary"  @click="dialogClosing = true" >Closing</v-btn>
       </v-card-text>
       
     </v-card>
@@ -72,7 +72,7 @@
           
         <v-flex md2 >{{entry.ts}}</v-flex>
         <v-flex md2 >{{entry.entrycat.name}}</v-flex>
-        <v-flex md3 >{{entry.event}}</v-flex>
+        <v-flex md3 ><p  class="text-break">{{entry.event}}</p></v-flex>
         <v-flex md4> <v-textarea v-model="entry.comment"  :auto-grow="true" :dense="true" :readonly="true" :rows="2"></v-textarea></v-flex>        
       </v-layout > 
        <v-divider></v-divider>
@@ -214,7 +214,8 @@
                    <v-flex md0.5></v-flex>
                     <v-flex md2> <v-btn    color="primary"  @click="createPDF">PDF generieren</v-btn></v-flex>
                     <v-flex md0.5></v-flex>
-                    <v-flex md2.5> <v-btn    color="primary"  @click="analyseR">Kurvenansicht</v-btn></v-flex>
+                     <v-flex md2.5> <v-btn    color="primary"  @click="dialogTypeSelect= true">Kurvenansicht</v-btn></v-flex>
+                 
                     <v-flex md0.5></v-flex>
                     <v-flex md2.5> <a :href="link"  target="_blank"><v-btn    color="primary"  @click="">EDF herunterladen</v-btn></a></v-flex>
                     <v-flex md0.5></v-flex>
@@ -2214,6 +2215,38 @@
         </v-card>
       </v-dialog> 
 
+              <!-- Dialog for edf oder csv selection -->
+        <v-dialog
+        v-model="dialogTypeSelect"
+        max-width="400"
+      >
+     
+        <v-card>
+          <v-card-title class="headline">Kurvenansicht</v-card-title>
+  
+          <v-card-text>
+            Wählen Sie zwischen der EDF Datei oder der CSV Datei mit den enthaltenen Signaldaten.
+          </v-card-text>
+  
+          <v-card-actions>
+            <v-spacer></v-spacer>
+  
+            <v-btn
+              depressed  large color="primary"
+              @click="analyseEDF"
+            >
+             EDF
+            </v-btn>
+  
+            <v-btn
+             depressed  large color="primary"
+              @click="analyseCSV"
+            >
+              CSV           </v-btn>
+          </v-card-actions>
+        </v-card>
+      </v-dialog>
+
         <v-dialog v-model="dialogCurve" width="auto" height="100" >
         
      <v-card>
@@ -2264,9 +2297,12 @@ export default {
 //initialize variables
   data: () => ({
     dialogCurve:false,
+  //edf filename is set to testfile for demonstration. 
  edfName: '/MEPtest2.edf',
+csvName: '/Median L.csv',
     edfData: {},
       lab: [],
+  csvData: [],
     breadcrumbs: [
         {
           text: 'Dashboard',
@@ -2287,6 +2323,7 @@ dialogUpload: false,
 dialogBaselines: false,
 dialogExtras: false,
 dialogClosing: false,
+dialogTypeSelect: false,
  
 
 interp: {
@@ -2965,7 +3002,7 @@ openFile: function(){
 
 //triggers R function on server that emmits r file to R. R file is proccessed in 
 //R an the return to the server. Server returns data to frontend and afterwards the signal curves are drawn
-   async analyseR(){
+   async analyseEDF(){
       //const token = window.localStorage.getItem('auth');
         this.dialogCurve = true;
         this.loading = true;
@@ -2983,8 +3020,9 @@ openFile: function(){
         .then((response) => {
   
            this.loading = false;
+           this.dialogTypeSelect = false;
           this.edfData = response.data;
-      
+      console.log(this.edfData);
           for(let i = 0; i<this.edfData[ 'Thenar re' ].fragments[0].signal.length; i++){
          this.lab.push(i);
         
@@ -3099,6 +3137,106 @@ var myChart = new Chart(ctx, {
                   spanGaps: false,
                 
             },]},
+   options:{
+                 responsive: true, 
+             scales: {
+    yAxes: [{
+      scaleLabel: {
+        display: true,
+        labelString: 'Amplitude [mV]',
+         fontStyle: "bold",
+      }
+    }],
+     xAxes: [{
+      scaleLabel: {
+        display: true,
+        labelString: 'Latency [ms]',
+         fontStyle: "bold",
+      }
+    }]
+  }     
+            }
+});
+        })
+        .catch(() => {});
+   },
+
+   //triggers R function on server that emmits r file to R. R file is proccessed in 
+//R an the return to the server. Server returns data to frontend and afterwards the signal curves are drawn
+   async analyseCSV(){
+      //const token = window.localStorage.getItem('auth');
+        this.dialogCurve = true;
+        this.loading = true;
+      return axios({
+        method: 'post',
+        data: {
+            name: this.csvName,
+          },
+        url: 'http://localhost:8081/ex-asyncCsv',
+         headers: {
+           // Authorization: `JWT ${token}`,
+            //'Content-Type': 'application/json',
+          },
+      })
+        .then((response) => {
+  
+           this.loading = false;
+           this.dialogTypeSelect = false;
+          this.edfData = response.data;
+         
+      
+
+          for(let i = 0; i<this.edfData.length; i++){
+            this.csvData.push(this.edfData[i].value);
+          }
+  
+      
+          for(let i = 0; i<this.edfData.length; i++){
+         this.lab.push(i);
+      
+        
+       };
+      
+          
+           var ctx = document.getElementById('myChart');
+        
+         
+      
+      
+ //Draw Curves with charts.js     
+var myChart = new Chart(ctx, {
+    type: 'line',
+   
+    data:
+    { labels: this.lab,
+      datasets: [
+            {
+                label: "SEP Median L",
+             
+                data: this.csvData,
+                fill: true,
+                  lineTension: 0.1,
+                  backgroundColor: "rgba(75,192,192,0.4)",
+                  borderColor: "rgba(75,192,192,1)",
+                  borderCapStyle: 'butt',
+                  borderDash: [],
+                  borderDashOffset: 0.0,
+                  borderJoinStyle: 'miter',
+                  pointBorderColor: "rgba(75,192,192,1)",
+                  pointBackgroundColor: "#fff",
+                  pointBorderWidth: 1,
+                  pointHoverRadius: 5,
+                  pointHoverBackgroundColor: "rgba(75,192,192,1)",
+                  pointHoverBorderColor: "rgba(220,220,220,1)",
+                  pointHoverBorderWidth: 2,
+                  pointRadius: 1,
+                  pointHitRadius: 10,
+                 
+                  spanGaps: false,
+                
+            },
+            
+          ]},
    options:{
                  responsive: true, 
              scales: {

@@ -23,13 +23,13 @@
        </v-card-text>
       
       <v-card-text class="text-center">
-       <v-btn  class="my-n3" width="180px"  color="primary"  @click="dialogBaselines = true" >Baselines</v-btn>
+       <v-btn  class="my-n3" width="140px"  color="primary"  @click="dialogBaselines = true" >Baselines</v-btn>
       </v-card-text>
       <v-card-text class="text-center">
-       <v-btn   class="my-n3" width="180px" color="primary"  @click="dialogExtras = true" >Extras</v-btn>
+       <v-btn   class="my-n3" width="140px" color="primary"  @click="dialogExtras = true" >Extras</v-btn>
       </v-card-text>
       <v-card-text class="text-center">
-       <v-btn  class="my-n3" width="180px"  color="primary"  @click="dialogClosing = true" >Closing</v-btn>
+       <v-btn  class="my-n3" width="140px"  color="primary"  @click="dialogClosing = true" >Closing</v-btn>
       </v-card-text>
     </v-card>
     </v-flex>
@@ -58,7 +58,13 @@
         </v-flex>
         <v-flex md1></v-flex>
         <v-flex md2>
-              <v-select label="Event"  v-model="entry.event" :items="entry.entrycat.options" item-text="options"  :value="entry.event"  return-object  name="entries[][event]" >{{entry.event}}</v-select>
+           <v-tooltip bottom>
+        <template v-slot:activator="{ on }">
+          <span v-on="on">              <v-select label="Event"  v-model="entry.event" :items="entry.entrycat.options" item-text="options"  :value="entry.event"  return-object  name="entries[][event]" >{{entry.event}}</v-select>
+</span>
+        </template>
+        <span>{{entry.event}}</span>
+      </v-tooltip>
         </v-flex>
         <v-flex md1></v-flex>
         <v-flex md3> <v-textarea label="Bemerkung" v-model="entry.comment"  name="entries[][comment]" :auto-grow="true" :dense="true" :clearable="true" :rows="2"></v-textarea></v-flex>
@@ -2208,8 +2214,8 @@ export default {
     op: ['Resektion','Clipping','Stabilisation','Dekompression','Biopsie','direkte Stimulation','Verschluss',''],
     anaest: ['TIVA','TIVA plus','Wach-OP',''],
     optechnik: ['Wach-OP', 'SCS', 'DBS', 'IB', ''],
-    modalities: ['SSEPs ', 'TES-MEPs ', 'DCS-MEPs ', 'AEPs ', 'VEPs ', 'CCEPs ', 'EMG ', 'ECOG '],
-    mapping:['Dynamischer Sauger ', 'DNS ', 'D-Welle ', 'Penfield '],
+    modalities: ['D-Welle ','SSEPs ', 'TES-MEPs ', 'DCS-MEPs ', 'AEPs ', 'VEPs ', 'CCEPs ', 'EMG ', 'ECOG '],
+    mapping:['Dynamischer Sauger ', 'DNS ',  'Penfield '],
     reflexes:['BR ', 'LAR ', 'BCR '],
 
  /* values for the baselines */

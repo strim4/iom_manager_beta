@@ -24,16 +24,16 @@
        </v-card-text>
       
        <v-card-text class="text-center">
-       <v-btn  class="my-n3" width="180px"  color="primary"  @click="dialogEval = true" >Auswertung </br> Monitorist</v-btn>
+       <v-btn  class="my-n3" width="140px"  color="primary"  @click="dialogEval = true" >Auswertung </br> Monitorist</v-btn>
       </v-card-text>
      <v-card-text class="text-center">
-       <v-btn  class="my-n3" width="180px"  color="primary"  @click="dialogBaselines = true" >Baselines</v-btn>
+       <v-btn  class="my-n3" width="140px"  color="primary"  @click="dialogBaselines = true" >Baselines</v-btn>
       </v-card-text>
       <v-card-text class="text-center">
-       <v-btn   class="my-n3" width="180px" color="primary"  @click="dialogExtras = true" >Extras</v-btn>
+       <v-btn   class="my-n3" width="140px" color="primary"  @click="dialogExtras = true" >Extras</v-btn>
       </v-card-text>
       <v-card-text class="text-center">
-       <v-btn   class="my-n3" width="180px" color="primary"  @click="dialogClosing = true" >Closing</v-btn>
+       <v-btn   class="my-n3" width="140px" color="primary"  @click="dialogClosing = true" >Closing</v-btn>
       </v-card-text>
       
     </v-card>
@@ -63,7 +63,7 @@
           
         <v-flex md2 >{{entry.ts}}</v-flex>
         <v-flex md2 >{{entry.entrycat.name}}</v-flex>
-        <v-flex md3 >{{entry.event}}</v-flex>
+        <v-flex md3  ><p  class="text-break">{{entry.event}}</p></v-flex>
         <v-flex md4> <v-textarea v-model="entry.comment"  :auto-grow="true" :dense="true" :readonly="true" :rows="2"></v-textarea></v-flex>        
       </v-layout > 
        <v-divider></v-divider>
