@@ -1170,7 +1170,9 @@
               <v-row>
                 <v-text-field v-model="interp.histopatho" label="Histopathologie"></v-text-field>
               </v-row>
+              <v-label>IOM:</v-label>
               <v-textarea  v-model="interp.text" :outlined="true" :auto-grow="true" ></v-textarea>
+              <v-label>Klinisch:</v-label>
               <v-textarea  v-model="interp.text2" :outlined="true" :auto-grow="true" ></v-textarea>
               <v-label>Defizite</v-label>
               <v-row>
@@ -1186,7 +1188,9 @@
                 </v-col>
                <v-col>
                  <v-select v-model="interp.deficitsMonth" class="my-n3" label="1 Monat postop" :items="deficits" multiple chips></v-select>
+                 
                  <v-text-field v-model="interp.CNMonth" class="my-n3" label="CN"></v-text-field>
+                 
                  <v-text-field v-model="interp.MCRSMonth" label="MCRS"></v-text-field>
                </v-col>
               </v-row>
@@ -3059,7 +3063,7 @@ image: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAIAAACyr5FlAAA1+E
           body: [
 
             ['Alter: ' + this.evaluation.age, 'Lokalisation: ' + this.evaluation.local,'Pathologie: ' + this.evaluation.patho, 'Anästhesie: ' + this.evaluation.anaest],
-            ['Geschlecht: ' + this.evaluation.age, 'Detail: ' + this.evaluation.local, 'Operation: ' + this.evaluation.op,''],
+            ['Geschlecht: ' + this.evaluation.sex, 'Detail: ' + this.evaluation.local, 'Operation: ' + this.evaluation.op,''],
           ]
         }
       
@@ -3098,10 +3102,10 @@ image: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAIAAACyr5FlAAA1+E
 				body: [
         
           [{text:'', style: 'tableHeader'}, {text:'N', style: 'tableHeader'}, {text:'P', style: 'tableHeader'}, {text:'Amplitude', style: 'tableHeader'}],
-					['Medianus L', this.baselines.ssepsMedianusLN, this.baselines.ssepsMedianusLP, this.baselines.ssepsMedianusLAmp + 'mA',],
-          ['Medianus R', this.baselines.ssepsMedianusRN, this.baselines.ssepsMedianusRP, this.baselines.ssepsMedianusRAmp + 'mA',],
-          ['Tibialis L', this.baselines.ssepsTibialisLN, this.baselines.ssepsTibialisLP, this.baselines.ssepsTibialisLAmp + 'mA',],
-          ['Tibialis R', this.baselines.ssepsTibialisRN, this.baselines.ssepsTibialisRP, this.baselines.ssepsTibialisRAmp + 'mA',],
+					['Medianus L', this.baselines.ssepsMedianusLN + ' ms', this.baselines.ssepsMedianusLP + ' ms', this.baselines.ssepsMedianusLAmp + ' uV',],
+          ['Medianus R', this.baselines.ssepsMedianusRN + ' ms', this.baselines.ssepsMedianusRP + ' ms', this.baselines.ssepsMedianusRAmp + ' uV',],
+          ['Tibialis L', this.baselines.ssepsTibialisLN + ' ms', this.baselines.ssepsTibialisLP + ' ms', this.baselines.ssepsTibialisLAmp + ' uV',],
+          ['Tibialis R', this.baselines.ssepsTibialisRN + ' ms', this.baselines.ssepsTibialisRP + ' ms', this.baselines.ssepsTibialisRAmp + ' uV',],
       
 				]
         

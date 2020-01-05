@@ -38,13 +38,13 @@
                   <v-subheader class="my-n5" >Medianus L</v-subheader>
                 </v-col>
                 <v-col cols="12" sm="6" md="1">
-                  <v-text-field v-model="baselines.ssepsMedianusLN" :disabled="true" class="my-n5"></v-text-field>
+                  <v-text-field v-model="baselines.ssepsMedianusLN" :disabled="true" class="my-n5" suffix="ms"></v-text-field>
                 </v-col>
                 <v-col cols="12" sm="6" md="1">
-                  <v-text-field v-model="baselines.ssepsMedianusLP" class="my-n5" :disabled="true"  ></v-text-field>
+                  <v-text-field v-model="baselines.ssepsMedianusLP" class="my-n5" :disabled="true" suffix="ms" ></v-text-field>
                 </v-col>
                 <v-col cols="12" sm="6" md="2">
-                  <v-text-field v-model="baselines.ssepsMedianusLAmp" class="my-n5" suffix="mA" :disabled="true" ></v-text-field>
+                  <v-text-field v-model="baselines.ssepsMedianusLAmp" class="my-n5" suffix="uV" :disabled="true" ></v-text-field>
                 </v-col>
               </v-row>
               <v-row>
@@ -52,13 +52,13 @@
                   <v-subheader class="my-n5" >Medianus R</v-subheader>
                 </v-col>
                 <v-col cols="12" sm="6" md="1">
-                  <v-text-field v-model="baselines.ssepsMedianusRN" class="my-n5" :disabled="true"  ></v-text-field>
+                  <v-text-field v-model="baselines.ssepsMedianusRN" class="my-n5" :disabled="true" suffix="ms" ></v-text-field>
                 </v-col>
                 <v-col cols="12" sm="6" md="1">
-                  <v-text-field v-model="baselines.ssepsMedianusRP" class="my-n5" :disabled="true" ></v-text-field>
+                  <v-text-field v-model="baselines.ssepsMedianusRP" class="my-n5" :disabled="true" suffix="ms" ></v-text-field>
                 </v-col>
                 <v-col cols="12" sm="6" md="2">
-                  <v-text-field v-model="baselines.ssepsMedianusRAmp" class="my-n5" suffix="mA" :disabled="true"  ></v-text-field>
+                  <v-text-field v-model="baselines.ssepsMedianusRAmp" class="my-n5" suffix="uV" :disabled="true"  ></v-text-field>
                 </v-col>
               </v-row>
               <v-row>
@@ -66,13 +66,13 @@
                   <v-subheader class="my-n5" >Tibialis L</v-subheader>
                 </v-col>
                 <v-col cols="12" sm="6" md="1">
-                  <v-text-field v-model="baselines.ssepsTibialisLN" class="my-n5" :disabled="true" ></v-text-field>
+                  <v-text-field v-model="baselines.ssepsTibialisLN" class="my-n5" :disabled="true" suffix="ms" ></v-text-field>
                 </v-col>
                 <v-col cols="12" sm="6" md="1">
-                  <v-text-field v-model="baselines.ssepsTibialisLP" class="my-n5" :disabled="true" ></v-text-field>
+                  <v-text-field v-model="baselines.ssepsTibialisLP" class="my-n5" :disabled="true" suffix="ms"></v-text-field>
                 </v-col>
                 <v-col cols="12" sm="6" md="2">
-                  <v-text-field v-model="baselines.ssepsTibialisLAmp" class="my-n5" suffix="mA" :disabled="true" ></v-text-field>
+                  <v-text-field v-model="baselines.ssepsTibialisLAmp" class="my-n5" suffix="uV" :disabled="true" ></v-text-field>
                 </v-col>
               </v-row>
               <v-row>
@@ -80,13 +80,13 @@
                   <v-subheader class="my-n5" >Tibialis R</v-subheader>
                 </v-col>
                 <v-col cols="12" sm="6" md="1">
-                  <v-text-field v-model="baselines.ssepsTibialisRN" class="my-n5" :disabled="true"  ></v-text-field>
+                  <v-text-field v-model="baselines.ssepsTibialisRN" class="my-n5" :disabled="true" suffix="ms"  ></v-text-field>
                 </v-col>
                 <v-col cols="12" sm="6" md="1">
-                  <v-text-field v-model="baselines.ssepsTibialisRP" class="my-n5" :disabled="true" ></v-text-field>
+                  <v-text-field v-model="baselines.ssepsTibialisRP" class="my-n5" :disabled="true" suffix="ms" ></v-text-field>
                 </v-col>
                 <v-col cols="12" sm="6" md="2">
-                  <v-text-field v-model="baselines.ssepsTibialisRAmp" class="my-n5" suffix="mA" :disabled="true"  ></v-text-field>
+                  <v-text-field v-model="baselines.ssepsTibialisRAmp" class="my-n5" suffix="uV" :disabled="true"  ></v-text-field>
                 </v-col>
               </v-row>
             </v-container>
@@ -935,6 +935,13 @@
                   ></v-select>
                 </v-col>
               </v-row>
+               <v-row>
+               <v-textarea class="mb-n10" v-model="baselines.bcrComment"
+                  outlined
+                  name="Bemerkungen"
+                 label="Bemerkungen"
+                  ></v-textarea>
+              </v-row>
             </v-container>
               </v-expansion-panel-content>
             </v-expansion-panel>
@@ -1286,6 +1293,7 @@ export default {
     larR:'',
     bcrL:'',
     bcrR:'',
+    bcrComment: '',
 
   },
 
