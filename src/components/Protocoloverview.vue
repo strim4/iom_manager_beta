@@ -2884,7 +2884,7 @@ computed: {
         data: {
           
         },
-        url: `http://localhost:8081/completcase/${casenr}`,
+        url: `/completcase/${casenr}`,
         headers: {
           Authorization: `JWT ${token}`,
           'Content-Type': 'application/json',
@@ -2946,7 +2946,7 @@ computed: {
             interp: this.interp,
             file: this.filename,
           },
-          url: `http://localhost:8081/completcase/${this.casenr}`,
+          url: `/completcase/${this.casenr}`,
           headers: {
             Authorization: `JWT ${token}`,
             'Content-Type': 'application/json',
@@ -2984,7 +2984,7 @@ this.update();
         data: {
           
         },
-        url: `http://localhost:8081/upload/${filename}`,
+        url: `/upload/${filename}`,
         headers: {
           Authorization: `JWT ${token}`,
           'Content-Type': 'multipart/form-data',
@@ -3031,7 +3031,7 @@ openFile: function(){
         data: {
             name: this.edfName,
           },
-        url: 'http://localhost:8081/ex-async',
+        url: '/ex-async',
          headers: {
            // Authorization: `JWT ${token}`,
             //'Content-Type': 'application/json',
@@ -3192,7 +3192,7 @@ var myChart = new Chart(ctx, {
         data: {
             name: this.csvName,
           },
-        url: 'http://localhost:8081/ex-asyncCsv',
+        url: '/ex-asyncCsv',
          headers: {
            // Authorization: `JWT ${token}`,
             //'Content-Type': 'application/json',

@@ -1311,7 +1311,7 @@ export default {
       const token = window.localStorage.getItem('auth');
       return axios({
         method: 'get',
-        url: 'http://localhost:8081/analyses',
+        url: '/analyses',
          headers: {
             Authorization: `JWT ${token}`,
             'Content-Type': 'application/json',
@@ -1334,7 +1334,7 @@ export default {
         data: {
           id,
         },
-        url: `http://localhost:8081/analyses/${id}`,
+        url: `/analyses/${id}`,
         headers: {
           Authorization: `JWT ${token}`,
           'Content-Type': 'application/json',
@@ -1356,7 +1356,7 @@ export default {
         data: {
           id,
         },
-        url: `http://localhost:8081/analyses/${id}`,
+        url: `/analyses/${id}`,
         headers: {
           Authorization: `JWT ${token}`,
           'Content-Type': 'application/json',
@@ -1405,7 +1405,7 @@ this.dialogBaselines = true;
         data: {
           id,
         },
-        url: `http://localhost:8081/analyses/${id}`,
+        url: `/analyses/${id}`,
         headers: {
           Authorization: `JWT ${token}`,
           'Content-Type': 'application/json',

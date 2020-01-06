@@ -134,7 +134,7 @@ localStorage.removeItem('auth');
 sessionStorage.removeItem('auth');
         return axios({
         method: 'get',
-        url: 'http://localhost:8081/logout',
+        url: '/logout',
         })
         .then(() => {
       
@@ -149,7 +149,7 @@ sessionStorage.removeItem('auth');
      const token = window.localStorage.getItem('auth');
 return axios({
 method: 'get',
-url: 'http://localhost:8081/current_user',
+url: '/current_user',
       headers: {
         Authorization: `JWT ${token}`,
         'Content-Type': 'application/json',
@@ -172,7 +172,7 @@ this.current_user = response.data.current_user;
         data: {
           id,
         },
-        url: `http://localhost:8081/users/${id}`,
+        url: `/users/${id}`,
         headers: {
           Authorization: `JWT ${token}`,
           'Content-Type': 'application/json',

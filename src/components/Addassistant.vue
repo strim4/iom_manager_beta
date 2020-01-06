@@ -106,7 +106,7 @@ export default {
           data: {
             assistant: this.assistant,
           },
-          url: 'http://localhost:8081/assistants',
+          url: '/assistants',
           headers: {
             Authorization: `JWT ${token}`,
             'Content-Type': 'application/json',
@@ -145,7 +145,7 @@ export default {
         data: {
           assistant: this.assistant,
         },
-        url: 'http://localhost:8081/assistants',
+        url: '/assistants',
          headers: {
             Authorization: `JWT ${token}`,
             'Content-Type': 'application/json',
@@ -166,7 +166,7 @@ export default {
         data: {
           id,
         },
-        url: `http://localhost:8081/assistants/${id}`,
+        url: `/assistants/${id}`,
         headers: {
           Authorization: `JWT ${token}`,
           'Content-Type': 'application/json',

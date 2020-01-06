@@ -106,7 +106,7 @@ export default {
           data: {
             diagnose: this.diagnose,
           },
-          url: 'http://localhost:8081/diagnoses',
+          url: '/diagnoses',
           headers: {
             Authorization: `JWT ${token}`,
             'Content-Type': 'application/json',
@@ -146,7 +146,7 @@ export default {
         data: {
           diagnose: this.diagnose,
         },
-        url: 'http://localhost:8081/diagnoses',
+        url: '/diagnoses',
         headers: {
             Authorization: `JWT ${token}`,
             'Content-Type': 'application/json',
@@ -167,7 +167,7 @@ export default {
         data: {
           id,
         },
-        url: `http://localhost:8081/diagnoses/${id}`,
+        url: `/diagnoses/${id}`,
         headers: {
           Authorization: `JWT ${token}`,
           'Content-Type': 'application/json',

@@ -107,7 +107,7 @@ export default {
           data: {
             surgeon: this.surgeon,
           },
-          url: 'http://localhost:8081/surgeons',
+          url: '/surgeons',
           headers: {
             Authorization: `JWT ${token}`,
             'Content-Type': 'application/json',
@@ -147,7 +147,7 @@ export default {
         data: {
           surgeon: this.surgeon,
         },
-        url: 'http://localhost:8081/surgeons',
+        url: '/surgeons',
          headers: {
             Authorization: `JWT ${token}`,
             'Content-Type': 'application/json',
@@ -168,7 +168,7 @@ export default {
         data: {
           id,
         },
-        url: `http://localhost:8081/surgeons/${id}`,
+        url: `/surgeons/${id}`,
         headers: {
           Authorization: `JWT ${token}`,
           'Content-Type': 'application/json',

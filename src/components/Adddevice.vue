@@ -105,7 +105,7 @@ export default {
           data: {
             device: this.device,
           },
-          url: 'http://localhost:8081/devices',
+          url: '/devices',
           headers: {
             Authorization: `JWT ${token}`,
             'Content-Type': 'application/json',
@@ -145,7 +145,7 @@ export default {
         data: {
           device: this.device,
         },
-        url: 'http://localhost:8081/devices',
+        url: '/devices',
          headers: {
             Authorization: `JWT ${token}`,
             'Content-Type': 'application/json',
@@ -166,7 +166,7 @@ export default {
         data: {
           id,
         },
-        url: `http://localhost:8081/devices/${id}`,
+        url: `/devices/${id}`,
         headers: {
           Authorization: `JWT ${token}`,
           'Content-Type': 'application/json',

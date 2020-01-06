@@ -107,7 +107,7 @@ export default {
           data: {
             operation: this.operation,
           },
-          url: 'http://localhost:8081/operations',
+          url: '/operations',
           headers: {
             Authorization: `JWT ${token}`,
             'Content-Type': 'application/json',
@@ -147,7 +147,7 @@ export default {
         data: {
           operation: this.operation,
         },
-        url: 'http://localhost:8081/operations',
+        url: '/operations',
          headers: {
             Authorization: `JWT ${token}`,
             'Content-Type': 'application/json',
@@ -168,7 +168,7 @@ export default {
         data: {
           id,
         },
-        url: `http://localhost:8081/operations/${id}`,
+        url: `/operations/${id}`,
         headers: {
           Authorization: `JWT ${token}`,
           'Content-Type': 'application/json',

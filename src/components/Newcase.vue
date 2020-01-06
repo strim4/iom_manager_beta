@@ -160,7 +160,7 @@ for(var i = 0; i < this.compCases.length; i++) {
             surgeon: this.surgeon,
             assistant: this.assistant,
           },
-          url: 'http://localhost:8081/cases',
+          url: '/cases',
           headers: {
             Authorization: `JWT ${token}`,
             'Content-Type': 'application/json',
@@ -201,7 +201,7 @@ for(var i = 0; i < this.compCases.length; i++) {
       const token = window.localStorage.getItem('auth');
       return axios({
         method: 'get',
-        url: 'http://localhost:8081/diagnoses',
+        url: '/diagnoses',
          headers: {
             Authorization: `JWT ${token}`,
             'Content-Type': 'application/json',
@@ -219,7 +219,7 @@ for(var i = 0; i < this.compCases.length; i++) {
       const token = window.localStorage.getItem('auth');
       return axios({
         method: 'get',
-        url: 'http://localhost:8081/operations',
+        url: '/operations',
           headers: {
             Authorization: `JWT ${token}`,
             'Content-Type': 'application/json',
@@ -236,7 +236,7 @@ for(var i = 0; i < this.compCases.length; i++) {
       const token = window.localStorage.getItem('auth');
       return axios({
         method: 'get',
-        url: 'http://localhost:8081/devices',
+        url: '/devices',
          headers: {
             Authorization: `JWT ${token}`,
             'Content-Type': 'application/json',
@@ -253,7 +253,7 @@ for(var i = 0; i < this.compCases.length; i++) {
       const token = window.localStorage.getItem('auth');
       return axios({
         method: 'get',
-        url: 'http://localhost:8081/surgeons',
+        url: '/surgeons',
          headers: {
             Authorization: `JWT ${token}`,
             'Content-Type': 'application/json',
@@ -270,7 +270,7 @@ for(var i = 0; i < this.compCases.length; i++) {
       const token = window.localStorage.getItem('auth');
       return axios({
         method: 'get',
-        url: 'http://localhost:8081/assistants',
+        url: '/assistants',
          headers: {
             Authorization: `JWT ${token}`,
             'Content-Type': 'application/json',
@@ -286,7 +286,7 @@ for(var i = 0; i < this.compCases.length; i++) {
       const token = window.localStorage.getItem('auth');
       return axios({
         method: 'get',
-        url: 'http://localhost:8081/cases',
+        url: '/cases',
          headers: {
             Authorization: `JWT ${token}`,
             'Content-Type': 'application/json',
@@ -302,7 +302,7 @@ for(var i = 0; i < this.compCases.length; i++) {
       const token = window.localStorage.getItem('auth');
       return axios({
         method: 'get',
-        url: 'http://localhost:8081/completcase',
+        url: '/completcase',
          headers: {
             Authorization: `JWT ${token}`,
             'Content-Type': 'application/json',

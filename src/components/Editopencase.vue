@@ -120,7 +120,7 @@ export default {
             surgeon: this.surgeon,
             assistant: this.assistant,
           },
-          url: `http://localhost:8081/cases/${this.id}`,
+          url: `/cases/${this.id}`,
           headers: {
             Authorization: `JWT ${token}`,
             'Content-Type': 'application/json',
@@ -156,7 +156,7 @@ export default {
       const token = window.localStorage.getItem('auth');
       return axios({
         method: 'get',
-        url: 'http://localhost:8081/diagnoses',
+        url: '/diagnoses',
          headers: {
             Authorization: `JWT ${token}`,
             'Content-Type': 'application/json',
@@ -174,7 +174,7 @@ export default {
       const token = window.localStorage.getItem('auth');
       return axios({
         method: 'get',
-        url: 'http://localhost:8081/operations',
+        url: '/operations',
          headers: {
             Authorization: `JWT ${token}`,
             'Content-Type': 'application/json',
@@ -192,7 +192,7 @@ export default {
       const token = window.localStorage.getItem('auth');
       return axios({
         method: 'get',
-        url: 'http://localhost:8081/devices',
+        url: '/devices',
          headers: {
             Authorization: `JWT ${token}`,
             'Content-Type': 'application/json',
@@ -210,7 +210,7 @@ export default {
       const token = window.localStorage.getItem('auth');
       return axios({
         method: 'get',
-        url: 'http://localhost:8081/surgeons',
+        url: '/surgeons',
          headers: {
             Authorization: `JWT ${token}`,
             'Content-Type': 'application/json',
@@ -228,7 +228,7 @@ export default {
       const token = window.localStorage.getItem('auth');
       return axios({
         method: 'get',
-        url: 'http://localhost:8081/assistants',
+        url: '/assistants',
          headers: {
             Authorization: `JWT ${token}`,
             'Content-Type': 'application/json',
@@ -250,7 +250,7 @@ export default {
         data: {
           id,
         },
-        url: `http://localhost:8081/cases/${id}`,
+        url: `/cases/${id}`,
         headers: {
           Authorization: `JWT ${token}`,
           'Content-Type': 'application/json',

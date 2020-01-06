@@ -112,7 +112,7 @@ export default {
       const token = window.localStorage.getItem('auth');
       return axios({
         method: 'get',
-        url: 'http://localhost:8081/cases',
+        url: '/cases',
          headers: {
             Authorization: `JWT ${token}`,
             'Content-Type': 'application/json',
@@ -136,7 +136,7 @@ export default {
         data: {
           id,
         },
-        url: `http://localhost:8081/cases/${id}`,
+        url: `/cases/${id}`,
         headers: {
           Authorization: `JWT ${token}`,
           'Content-Type': 'application/json',

@@ -162,7 +162,7 @@ methods: {
        const token = window.localStorage.getItem('auth');
       return axios({
         method: 'get',
-        url: 'http://localhost:8081/cases',
+        url: '/cases',
          headers: {
         Authorization: `JWT ${token}`,
         'Content-Type': 'application/json',
@@ -182,7 +182,7 @@ methods: {
        const token = window.localStorage.getItem('auth');
       return axios({
         method: 'get',
-        url: 'http://localhost:8081/completcase',
+        url: '/completcase',
         headers: {
         Authorization: `JWT ${token}`,
         'Content-Type': 'application/json',
