@@ -62,6 +62,7 @@ fs.readdirSync("controllers").forEach(function (file) {
     }
     })
     app.use(history());
+    
     app.use(serveStatic(__dirname + "/dist"));
 
 router.get('/', function(req, res) {
