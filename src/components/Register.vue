@@ -94,8 +94,8 @@ export default {
                     })
                     .then(() => {
                         this.$swal(
-                            'Erflogreich!',
-                            'Sie haben sich erflogreich registriert!',
+                            'Erfolgreich!',
+                            'Sie haben sich erfolgreich registriert!',
                             'success',
                         );
                         this.$router.push({ name: 'Login' });

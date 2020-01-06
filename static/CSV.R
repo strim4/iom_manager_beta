@@ -1,9 +1,10 @@
+
 #Load required packages (The required packages must first be installed via R-Studio)
 library(readr)
 library(jsonlite)
 library(tidyr)
 
-#Suppress import messages, because the R-Script library would interpret them as output.
+#Suppress import messages, because the R-Script library would interpret them as output
 options(readr.num_columns = 0)
 
 #Path needs to be adapted to local iom_manager/static directory
@@ -12,7 +13,7 @@ libDir <- "C:/Users/stmo/iom_manager/static"
 #Input from r-script (name of the csv-file)
 list <- input[[1]]
 
-#load csv
+#Load csv
 csv <- paste(libDir, list$name, sep='')
 m <- read_delim(csv, ";", escape_double = FALSE, trim_ws = TRUE)
 
@@ -31,5 +32,7 @@ t <- Signals[Signals$Timestamp=='20181106T135754,764',]
 
 ##convert output to json
 toJSON(t, force = TRUE)
+
+
 
 
