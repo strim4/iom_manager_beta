@@ -971,21 +971,24 @@
               <v-expansion-panel-header>Reflexe</v-expansion-panel-header>
               <v-expansion-panel-content>
               <v-container>
-              <v-row>
+             <v-row>
                 <v-col cols="12" sm="6" md="2">
                   <v-subheader class="my-n5" >BR</v-subheader>
                 </v-col>
                 <v-col cols="12" sm="6" md="2">
-                  <v-select v-model="baselines.brL" class="my-n5" 
+                  <v-select v-model="baselines.brL" class="my-n5"  
                     :items="items"
                     label="L"
                   ></v-select>
                  </v-col>
                 <v-col cols="12" sm="6" md="2">
-                  <v-select v-model="baselines.brR" class="my-n5" 
+                  <v-select v-model="baselines.brR" class="my-n5"  
                     :items="items"
                     label="R"
                   ></v-select>
+                </v-col>
+                <v-col cols="12" sm="6" md="2">
+                   <v-text-field  v-model="baselines.brt" class="my-n5"  ></v-text-field>
                 </v-col>
               </v-row>
               <v-row>
@@ -993,41 +996,40 @@
                   <v-subheader class="my-n5" >LAR</v-subheader>
                 </v-col>
                 <v-col cols="12" sm="6" md="2">
-                  <v-select v-model="baselines.larL" class="my-n5" 
+                  <v-select v-model="baselines.larL" class="my-n5"  
                     :items="items"
                     label="L"
                   ></v-select>
                  </v-col>
                 <v-col cols="12" sm="6" md="2">
-                  <v-select v-model="baselines.larR" class="my-n5" 
+                  <v-select v-model="baselines.larR" class="my-n5"  
                     :items="items"
                     label="R"
                   ></v-select>
                 </v-col>
+                   <v-col cols="12" sm="6" md="2">
+                   <v-text-field  v-model="baselines.lart" class="my-n5"  ></v-text-field>
+                </v-col>
               </v-row>
               <v-row>
                 <v-col cols="12" sm="6" md="2">
-                  <v-subheader class="my-n5" >BCR</v-subheader>
+                  <v-subheader class="my-n5"  >BCR</v-subheader>
                 </v-col>
                   <v-col cols="12" sm="6" md="2">
-                  <v-select v-model="baselines.bcrL" class="my-n5" 
+                  <v-select v-model="baselines.bcrL" class="my-n5"  
                     :items="items"
                     label="L"
                   ></v-select>
                  </v-col>
                 <v-col cols="12" sm="6" md="2">
-                  <v-select v-model="baselines.bcrR" class="my-n5" 
+                  <v-select v-model="baselines.bcrR" class="my-n5"  
                     :items="items"
                     label="R"
                   ></v-select>
                 </v-col>
-              </v-row>
-              <v-row>
-               <v-textarea class="mb-n10" v-model="baselines.bcrComment"
-                  outlined
-                  name="Bemerkungen"
-                 label="Bemerkungen"
-                  ></v-textarea>
+                  <v-col cols="12" sm="6" md="2">
+                   <v-text-field  v-model="baselines.bcrt" class="my-n5"  ></v-text-field>
+                </v-col>
               </v-row>
             </v-container>
               </v-expansion-panel-content>
@@ -1998,6 +2000,9 @@
                     label="R"
                   ></v-select>
                 </v-col>
+                 <v-col cols="12" sm="6" md="2">
+                   <v-text-field  v-model="closing.brt" class="my-n5" ></v-text-field>
+                </v-col>
               </v-row>
               <v-row>
                 <v-col cols="12" sm="6" md="2">
@@ -2009,11 +2014,15 @@
                     label="L"
                   ></v-select>
                  </v-col>
+                 
                 <v-col cols="12" sm="6" md="2">
                   <v-select v-model="closing.larR" class="my-n5" 
                     :items="items"
                     label="R"
                   ></v-select>
+                </v-col>
+                <v-col cols="12" sm="6" md="2">
+                   <v-text-field  v-model="closing.lart" class="my-n5" ></v-text-field>
                 </v-col>
               </v-row>
               <v-row>
@@ -2032,13 +2041,9 @@
                     label="R"
                   ></v-select>
                 </v-col>
-              </v-row>
-              <v-row>
-               <v-textarea class="mb-n10" v-model="closing.bcrComment"
-                  outlined
-                  name="Bemerkungen"
-                 label="Bemerkungen"
-                  ></v-textarea>
+                  <v-col cols="12" sm="6" md="2">
+                   <v-text-field  v-model="closing.bcrt" class="my-n5" ></v-text-field>
+                </v-col>
               </v-row>
             </v-container>
               </v-expansion-panel-content>
