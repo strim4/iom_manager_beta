@@ -46,7 +46,7 @@ app.use(passport.initialize());
 
 
 //connect to mongodb
-mongoose.connect('mongodb://localhost/iom_manager', function() {
+mongoose.connect('mongodb+srv://iommanager:Dezember2019@cluster0-vjmex.mongodb.net/test?retryWrites=true&w=majority', function() {
 console.log('Connection has been made');
 })
 .catch(err => {
